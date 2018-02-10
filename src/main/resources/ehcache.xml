@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
+         updateCheck="true" monitoring="autodetect" dynamicConfig="true">
+
+    <cache name="menu.bukgu"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.bupyeong"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.elib"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.gyeyang"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.hwadojin"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.ice"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.juan"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.jungang"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.seogu"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+    <cache name="menu.yeonsu"
+           maxElementsInMemory="100" eternal="false"
+           overflowToDisk="false"
+           timeToLiveSeconds="300" timeToIdleSeconds="0"
+           memoryStoreEvictionPolicy="LFU" transactionalMode="off">
+    </cache>
+</ehcache>

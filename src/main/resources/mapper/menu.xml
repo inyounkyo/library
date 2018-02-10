@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.go.common.menu.MenuLibCache">
+
+    <select id="menuBukguCache" parameterType="string" resultType="map">
+        SELECT a.m_idx, a.m_pidx, a.m_url, a.m_urlnm ,a.m_accessauth, a.m_sort, level as lev
+        FROM MENU A, LIB B
+        WHERE A.LIB_CD = B.LIB_CD
+        AND B.LIB_CD = #{libCd}
+        START WITH A.M_PIDX IS NULL
+        CONNECT BY PRIOR A.M_IDX = A.M_PIDX
+        ORDER SIBLINGS BY A.M_SORT
+    </select>
+
+</mapper>
