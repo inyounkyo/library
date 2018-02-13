@@ -14,7 +14,7 @@ spring:
     password: 1234
 
 server:
-  port: 80
+  port: 8080
   cache:
     ehcache:
     config: classpath:ehcache.xml
@@ -33,7 +33,7 @@ spring:
     password: 1234
 
 server:
-  port: 80
+  port: 8080
   cache:
     ehcache:
     config: classpath:ehcache.xml
