@@ -8,7 +8,7 @@ Bukgu.activeWork = (function ( $ ) {
             console.log(s);
         },
         cc :function(){
-            $.each([ 52, 97 ], function( index, value ) {
+            $.each([ 1, 2 ,3,4,5,6,7,8], function( index, value ) {
                 console.log( index + ": " + value );
             });
         }
