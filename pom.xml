@@ -30,6 +30,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<!-- The main class to start by executing java -jar -->
+		<!--<start-class>kr.go.LibApplication</start-class>-->
 	</properties>
 
 	<dependencies>
@@ -110,11 +112,18 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>1.5.10.RELEASE</version>
-				<configuration>
-					<addResources>true</addResources>
-				</configuration>
+				<!--<configuration>-->
+					<!--<mainClass>kr.go.LibApplication</mainClass>-->
+					<!--<addResources>true</addResources>-->
+				<!--</configuration>-->
 			</plugin>
-
+			<!--<plugin>-->
+				<!--<groupId>org.apache.maven.plugins</groupId>-->
+				<!--<artifactId>maven-war-plugin</artifactId>-->
+				<!--<configuration>-->
+					<!--<failOnMissingWebXml>false</failOnMissingWebXml>-->
+				<!--</configuration>-->
+			<!--</plugin>-->
 		</plugins>
 
 	</build>

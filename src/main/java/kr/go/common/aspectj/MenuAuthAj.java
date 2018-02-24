@@ -71,7 +71,7 @@ public class MenuAuthAj {
         logger.info("sameRowMap:::"+sameRowMap);
         //if call not url forwarding for main page
         if(sameRowMap == null){
-            req.getRequestDispatcher("/main").forward(req, rep);
+            //req.getRequestDispatcher("/main").forward(req, rep);
         }
         //public page
         else if(sameRowMap != null && sameRowMap.get("M_ACCESSAUTH").equals(PUBLIC)){

@@ -2,17 +2,24 @@ package kr.go.lib.bukgu.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 @Controller
 @RequestMapping("bukgu")
 public class BukguController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Value("${spring.pyMenuMain.path}")
+    String path;
 
     @RequestMapping("/index")
     public String index(){
@@ -20,7 +27,8 @@ public class BukguController {
     }
 
     @RequestMapping(value="/libMaterialSearch", method = RequestMethod.GET)
-    public String libMaterialSearch(     ModelMap model){
+    public String libMaterialSearch( ModelMap model)throws IOException {
+
         return "/bukgu/libMaterialSearch";
     }
 

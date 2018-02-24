@@ -2,8 +2,7 @@
 # 2. --- 구분
 
 spring:
-  profiles:
-    active: dev
+  profiles: dev
   devtools:
     livereload:
       enabled: true
@@ -12,9 +11,13 @@ spring:
     url: jdbc:oracle:thin:@192.168.126.1:1521:XE
     username: kknd
     password: 1234
+  pyMenuMain:
+    path: /dfsdf/dev/sdfsdfsdf
 
 server:
   port: 80
+  tomcat:
+    uri-encoding: utf-8
   cache:
     ehcache:
     config: classpath:ehcache.xml
@@ -22,7 +25,8 @@ server:
 ---
 
 spring:
-  profiles: local
+  profiles:
+    active: local
   devtools:
     livereload:
       enabled: true
@@ -31,9 +35,11 @@ spring:
     url: jdbc:oracle:thin:@localhost:1521:XE
     username: kknd
     password: 1234
+  pyMenuMain:
+    path: C:/springbootJSP-master/src/main/resources/
 
 server:
-  port: 8080
+  port: 80
   cache:
     ehcache:
     config: classpath:ehcache.xml

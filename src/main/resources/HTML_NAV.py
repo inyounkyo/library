@@ -48,7 +48,7 @@ class CreateNav:
                 # ht+='<a href=\''+str(bsl[k][0][2])+'\'>'+str(bsl[k1][0][3])+'</a>'
                 ht+='<li class="dropdown">' \
                     '<a href="javascript:void(0)" class="dropbtn">'+str(bsl[k1][0][3])+'</a>' \
-                                                                                       '<div class="dropdown-content">'
+                    '<div class="dropdown-content">'
                 for k2 in bsl[k1]:
                     if k2[6] == 2:
                         ht+='<a href=\''+k2[2]+'\'>'+str(k2[3])+'</a>'
@@ -79,7 +79,7 @@ class CreateNav:
 
     def fileWrite(self):
         print(os.getcwd())
-        fileNM = 'C:/springbootJSP-master/src/main/webapp/static/nav/libLNB.html'
+        fileNM = 'C:/springbootJSP-master/src/main/webapp/static/html/nav/bukgu/libLNB.html'
         self.fo = open(fileNM, mode="w", encoding="utf8")
         self.fo.write(self.htmlTag)
         self.fo.close()
@@ -88,4 +88,4 @@ cnIns = CreateNav()
 cnIns.commandBlockFactory();
 cnIns.fileWrite()
 
-# receiveCallJavaArgs()
+receiveCallJavaArgs()
