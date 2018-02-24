@@ -28,6 +28,7 @@ class CreateNav:
         self.htmlTag = None
         self.libCd = args.LIB_CD
         self.libLoc = args.LIB_LOC
+        self.saveDirPath = args.saveDirPath
         self.menuTuples = dbConnForOralce(args.LIB_CD)
 
     def commandBlockFactory(self):
@@ -72,15 +73,17 @@ class CreateNav:
 
     def fileWrite(self):
         # print(os.getcwd())
-        fileNM = 'C:/springbootJSP-master/src/main/webapp/static/html/nav/'+self.libLoc+'/libLNB.html'
+        fileNM = self.saveDirPath.replace("++", self.libLoc)
+        print(fileNM)
         self.fo = open(fileNM, mode="w", encoding="utf8")
         self.fo.write(self.htmlTag)
         self.fo.close()
 
 def receiveCallJavaArgs():
-    parser = argparse.ArgumentParser(description='LIB_LOC, LIB_CD')
+    parser = argparse.ArgumentParser(description='LIB_LOC, LIB_CD, saveDirPath')
     parser.add_argument("LIB_LOC", help="", type=str)
     parser.add_argument("LIB_CD", help="", type=str)
+    parser.add_argument("saveDirPath", help="saveing menu(HTML FILE) to physical path", type=str)
     args = parser.parse_args()
     # print(args.LIB_LOC)
     # print(args.LIB_CD)
