@@ -2,25 +2,17 @@ import cx_Oracle
 import argparse
 import os
 
-def receiveCallJavaArgs():
-    parser = argparse.ArgumentParser(description='LIB_LOC, LIB_CD')
-    parser.add_argument("LIB_LOC", help="", type=str)
-    parser.add_argument("LIB_CD", help="", type=str)
-    args = parser.parse_args()
-    print(args.LIB_LOC)
-    print(args.LIB_CD)
-
-def dbConnForOralce():
+def dbConnForOralce(libCd):
     con = cx_Oracle.connect("kknd", "1234", "localhost/XE",encoding = "UTF-8", nencoding = "UTF-8")
     cur = con.cursor()
     sql = """SELECT a.m_idx, a.m_pidx, a.m_url, a.m_urlnm ,a.m_accessauth, a.m_sort, LEVEL as lev 
     FROM MENU A 
-    where a.LIB_CD = 'LIB004'
+    where a.LIB_CD = :libCd
     START WITH A.M_PIDX IS NULL
     CONNECT BY PRIOR A.M_IDX = A.M_PIDX
     ORDER SIBLINGS BY A.M_SORT"""
-    cur.execute(sql)
-    #cur.execute(None, {'id': 'LIB001'})
+    # cur.execute(sql)
+    cur.execute(sql, {'libCd': libCd})
     menuList = []
     for result in cur:
         menuList.append(result)
@@ -32,15 +24,17 @@ def dbConnForOralce():
 
 class CreateNav:
 
-    def __init__(self):
+    def __init__(self, args):
         self.htmlTag = None
-        self.menuTuples = dbConnForOralce()
+        self.libCd = args.LIB_CD
+        self.libLoc = args.LIB_LOC
+        self.menuTuples = dbConnForOralce(args.LIB_CD)
 
     def commandBlockFactory(self):
 
         def createNav( bsl ):
             ht=None
-            print('1depth:::',bsl)
+            # print('1depth:::',bsl)
             ht='<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>'
             ht+='<ul>'
             for k1 in bsl.keys():
@@ -76,16 +70,23 @@ class CreateNav:
         self.htmlTag = createNav(blockSetList)
         print(self.htmlTag)
 
-
     def fileWrite(self):
-        print(os.getcwd())
-        fileNM = 'C:/springbootJSP-master/src/main/webapp/static/html/nav/bukgu/libLNB.html'
+        # print(os.getcwd())
+        fileNM = 'C:/springbootJSP-master/src/main/webapp/static/html/nav/'+self.libLoc+'/libLNB.html'
         self.fo = open(fileNM, mode="w", encoding="utf8")
         self.fo.write(self.htmlTag)
         self.fo.close()
 
-cnIns = CreateNav()
-cnIns.commandBlockFactory();
-cnIns.fileWrite()
+def receiveCallJavaArgs():
+    parser = argparse.ArgumentParser(description='LIB_LOC, LIB_CD')
+    parser.add_argument("LIB_LOC", help="", type=str)
+    parser.add_argument("LIB_CD", help="", type=str)
+    args = parser.parse_args()
+    # print(args.LIB_LOC)
+    # print(args.LIB_CD)
+
+    cnIns = CreateNav(args)
+    cnIns.commandBlockFactory();
+    cnIns.fileWrite()
 
 receiveCallJavaArgs()
