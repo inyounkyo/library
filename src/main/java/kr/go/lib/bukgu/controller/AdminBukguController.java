@@ -34,8 +34,8 @@ public class AdminBukguController {
         String[] cmd = new String[4];
         cmd[0] = "python"; // check version of installed python: python -V
         cmd[1] = pythonScriptPath;
-        cmd[2] = "abcd";
-        cmd[3] = "kkk";
+        cmd[2] = "bukgu";  //LIB_LOC
+        cmd[3] = "LIB004";   //LIB_CD
 
         // create runtime to execute external command
         Runtime rt = Runtime.getRuntime();
