@@ -14,14 +14,14 @@ import java.util.Map;
 @Service
 public class MenuLibCacheImple {
 
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+        Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private MenuLibCache menuMapper;
+        @Autowired
+        private MenuLibCache menuMapper;
 
-    @PostConstruct
-    public void menuInit(){
-        logger.info("menuInit TEST....");
+        @PostConstruct
+        public void menuInit(){
+            logger.info("menuInit TEST....");
 
        /* menuBukguCache();
         menuBupyeongCache();

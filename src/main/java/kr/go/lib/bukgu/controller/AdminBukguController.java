@@ -1,7 +1,11 @@
 package kr.go.lib.bukgu.controller;
 
+import kr.go.common.menu.MenuCreatePy;
+import kr.go.common.menu.MenuLibCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
@@ -21,6 +25,12 @@ public class AdminBukguController {
 
     @Value("${spring.pyMenuMain.path}")
     String path;
+    @Value("${spring.pyMenuMain.saveDirPath}")
+    String saveDirPath;
+
+    @Autowired
+    @Qualifier("mcp")
+    private MenuCreatePy menuCreatePy;
 
     @RequestMapping("/index")
     public String index(){
@@ -29,25 +39,9 @@ public class AdminBukguController {
 
     @RequestMapping(value="/menu", method = RequestMethod.GET)
     public String admin( ModelMap model)throws IOException {
-        // set up the command and parameter
-        String pythonScriptPath = path+"HTML_NAV.py";
-        String[] cmd = new String[4];
-        cmd[0] = "python"; // check version of installed python: python -V
-        cmd[1] = pythonScriptPath;
-        cmd[2] = "bukgu";  //LIB_LOC
-        cmd[3] = "LIB004";   //LIB_CD
 
-        // create runtime to execute external command
-        Runtime rt = Runtime.getRuntime();
-        Process pr = rt.exec(cmd);
+        menuCreatePy.sendCallPythonArgs(path, saveDirPath, "bukgu", "LIB001" );
 
-        // retrieve output from python script
-        BufferedReader bfr = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-        String line = "";
-        while((line = bfr.readLine()) != null) {
-            // display each output line form python script
-            System.out.println(line);
-        }
         return "/bukgu/admin/menu";
     }
 

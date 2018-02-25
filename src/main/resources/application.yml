@@ -12,7 +12,8 @@ spring:
     username: kknd
     password: 1234
   pyMenuMain:
-    path: /dfsdf/dev/sdfsdfsdf
+    path: /usr/loca/dev/sdfsdfsdf
+    saveDirPath: /usr/local/server/tomcat/webapp/static/html/nav/++/libLNB.html
 
 server:
   port: 80
@@ -37,6 +38,7 @@ spring:
     password: 1234
   pyMenuMain:
     path: C:/springbootJSP-master/src/main/resources/
+    saveDirPath: C:/springbootJSP-master/src/main/webapp/static/html/nav/++/libLNB.html
 
 server:
   port: 80
