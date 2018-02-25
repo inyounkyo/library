@@ -1,6 +1,5 @@
 import cx_Oracle
 import argparse
-import os
 
 def dbConnForOralce(libCd):
     con = cx_Oracle.connect("kknd", "1234", "localhost/XE",encoding = "UTF-8", nencoding = "UTF-8")
