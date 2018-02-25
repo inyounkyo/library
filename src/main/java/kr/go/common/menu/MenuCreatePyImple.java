@@ -20,8 +20,8 @@ public class MenuCreatePyImple implements MenuCreatePy {
         String[] cmd = new String[5];
         cmd[0] = "python"; // check version of installed python: python -V
         cmd[1] = pythonScriptPath;
-        cmd[2] = "bukgu";  //LIB_LOC
-        cmd[3] = "LIB001";   //LIB_CD
+        cmd[2] = libLoc;  //LIB_LOC
+        cmd[3] = libCd;   //LIB_CD
         cmd[4] = saveDirPath; //saveing menu(HTML FILE) to physical path
 
         // create runtime to execute external command
