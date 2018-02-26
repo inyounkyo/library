@@ -2,7 +2,8 @@
 # 2. --- 구분
 
 spring:
-  profiles: dev
+  profiles:
+  active: dev
   devtools:
     livereload:
       enabled: true
@@ -26,8 +27,7 @@ server:
 ---
 
 spring:
-  profiles:
-    active: local
+  profiles: local
   devtools:
     livereload:
       enabled: true
