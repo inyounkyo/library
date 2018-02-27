@@ -3,7 +3,7 @@
 
 spring:
   profiles:
-  active: dev
+    active: dev
   devtools:
     livereload:
       enabled: true
@@ -16,6 +16,7 @@ spring:
     path: /usr/local/server/tomcat8/webapps/ROOT/WEB-INF/classes/
     saveDirPath: /usr/local/server/tomcat8/webapp/static/html/nav/++/libLNB.html
     pythonV: python3.6
+
 server:
   port: 80
   tomcat:
@@ -40,6 +41,7 @@ spring:
     path: C:/springbootJSP-master/src/main/resources/
     saveDirPath: C:/springbootJSP-master/src/main/webapp/static/html/nav/++/libLNB.html
     pythonV: python
+
 server:
   port: 80
   cache:
