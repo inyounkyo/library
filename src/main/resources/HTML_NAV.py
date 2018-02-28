@@ -2,7 +2,7 @@ import cx_Oracle
 import argparse
 
 def dbConnForOralce(libCd):
-    con = cx_Oracle.connect("kknd", "1234", "jdbc:oracle:thin:@192.168.126.1:1521:XE",encoding = "UTF-8", nencoding = "UTF-8")
+    con = cx_Oracle.connect("kknd", "1234", "192.168.126.1/XE",encoding = "UTF-8", nencoding = "UTF-8")
     cur = con.cursor()
     sql = """SELECT a.m_idx, a.m_pidx, a.m_url, a.m_urlnm ,a.m_accessauth, a.m_sort, LEVEL as lev 
     FROM MENU A 
