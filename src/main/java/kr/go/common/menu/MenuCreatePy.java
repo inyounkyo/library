@@ -5,5 +5,5 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 public interface MenuCreatePy {
-    public void sendCallPythonArgs(String path, String saveDirPath, String libLoc, String libCd) throws IOException;
+    public void sendCallPythonArgs(String pythonV, String path, String saveDirPath, String libLoc, String libCd) throws IOException;
 }

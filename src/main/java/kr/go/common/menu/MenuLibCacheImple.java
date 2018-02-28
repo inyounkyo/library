@@ -67,12 +67,10 @@ public class MenuLibCacheImple {
     }
 
     @Cacheable("menu.juan")
-    public Map<String, Object> menuJuanCache() {
-
+    public List<Map<String, Object>> menuJuanCache() {
         logger.info("juan.....");
-        return null;
+        return menuMapper.menuBukguCache("LIB004");
     }
-
     @Cacheable("menu.jungang")
     public Map<String, Object> menuJungangCache() {
         return null;

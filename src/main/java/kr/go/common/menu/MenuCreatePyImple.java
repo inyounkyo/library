@@ -14,11 +14,11 @@ public class MenuCreatePyImple implements MenuCreatePy {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public void sendCallPythonArgs(String path, String saveDirPath, String libLoc, String libCd) throws IOException{
+    public void sendCallPythonArgs(String pythonV, String path, String saveDirPath, String libLoc, String libCd) throws IOException{
         // set up the command and parameter
         String pythonScriptPath = path+"HTML_NAV.py";
         String[] cmd = new String[5];
-        cmd[0] = "python"; // check version of installed python: python -V
+        cmd[0] = pythonV; // check version of installed python: python -V
         cmd[1] = pythonScriptPath;
         cmd[2] = libLoc;  //LIB_LOC
         cmd[3] = libCd;   //LIB_CD
