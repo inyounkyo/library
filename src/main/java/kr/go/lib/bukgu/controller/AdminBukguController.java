@@ -27,6 +27,8 @@ public class AdminBukguController {
     String path;
     @Value("${spring.pyMenuMain.saveDirPath}")
     String saveDirPath;
+    @Value("${spring.pyMenuMain.pythonV}")
+    String pythonV;
 
     @Autowired
     @Qualifier("mcp")
@@ -39,8 +41,11 @@ public class AdminBukguController {
 
     @RequestMapping(value="/menu", method = RequestMethod.GET)
     public String admin( ModelMap model)throws IOException {
+        logger.info("pythonV:: "+pythonV);
+        logger.info("path:: "+path);
+        logger.info("saveDirPath:: "+saveDirPath);
 
-        menuCreatePy.sendCallPythonArgs(path, saveDirPath, "bukgu", "LIB001" );
+        menuCreatePy.sendCallPythonArgs(pythonV, path, saveDirPath, "bukgu", "LIB001" );
 
         return "/bukgu/admin/menu";
     }
