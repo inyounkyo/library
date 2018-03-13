@@ -24,15 +24,17 @@ def dbConnForOralce(libCd):
 class CreateNav:
 
     def __init__(self, args):
-        self.htmlTag = None
+        self.htmlTagGNB = None
+        self.htmlTagLNB = None
         self.libCd = args.LIB_CD
         self.libLoc = args.LIB_LOC
         self.saveDirPath = args.saveDirPath
+        self.navArr = [args.LIB_GNB, args.LIB_LNB];
         self.menuTuples = dbConnForOralce(args.LIB_CD)
 
     def commandBlockFactory(self):
 
-        def createNav( bsl ):
+        def createNavGNB( bsl ):
             ht=None
             # print('1depth:::',bsl)
             ht='<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>'
@@ -52,6 +54,31 @@ class CreateNav:
             # print(ht)
             return ht
 
+        def createNavLNB( bsl ):
+            ht=None
+            ht='<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>'
+            ht+='<nav class="navigation">'
+            ht+='<ul class="mainmenu">'
+
+            for k1 in bsl[str(0)]:
+                if k1[6] == 2:
+                    lv3 = [x for x in bsl[str(0)] if x[1]==k1[0]]
+                    ht+='<li menu-idx=\''+str(k1[0])+'\'><a href=\''+k1[2]+'\'>'+str(k1[3])+'</a></li>'
+
+                    for idx2, k2 in enumerate(lv3):
+                        if idx2 == 0:
+                            ht+='<li ><a href="#" class="hasChildMark">'+str(k1[3])+'</a>'
+                            ht+='<ul class="submenu">'
+
+                        ht+='<li menu-idx=\''+str(k2[0])+'\'><a href=\''+k2[2]+'\'>'+str(k2[3])+'</a></li>'
+
+                        if len(lv3[idx2]) == idx2:
+                            ht+='</ul>'
+                            ht+='</li>'
+            ht+='</ul>'
+            ht+='</nav>'
+            return ht;
+
         def divideTuble():
             __blockSetList__ = {}
             tupleIdx = []
@@ -67,23 +94,29 @@ class CreateNav:
 
         blockSetList = divideTuble()
 
-        self.htmlTag = createNav(blockSetList)
-        print(self.htmlTag)
+        self.htmlTagGNB = createNavGNB(blockSetList)
+        self.htmlTagLNB = createNavLNB(blockSetList)
+        print(self.htmlTagGNB)
+        # print(self.htmlTagLNB)
 
     def fileWrite(self):
         # print(os.getcwd())
-        fileNM = self.saveDirPath.replace("++", self.libLoc)
-        print(fileNM)
-        self.fo = open(fileNM, mode="w", encoding="utf8")
-        self.fo.write(self.htmlTag)
-        self.fo.close()
+        for i, nav in enumerate(self.navArr):
+            fileNM = self.saveDirPath.replace("++", self.libLoc)+nav
+            print(fileNM,i)
+            self.fo = open(fileNM, mode="w", encoding="utf8")
+            self.fo.write( [self.htmlTagGNB, self.htmlTagLNB][i] )
+            self.fo.close()
 
 def receiveCallJavaArgs():
-    parser = argparse.ArgumentParser(description='LIB_LOC, LIB_CD, saveDirPath')
+    parser = argparse.ArgumentParser(description='LIB_LOC, LIB_CD, saveDirPath, LIB_GNB, LIB_LNB')
     parser.add_argument("LIB_LOC", help="", type=str)
     parser.add_argument("LIB_CD", help="", type=str)
     parser.add_argument("saveDirPath", help="saveing menu(HTML FILE) to physical path", type=str)
+    parser.add_argument("LIB_GNB", help="nav GNB", type=str)
+    parser.add_argument("LIB_LNB", help="nav LNB", type=str)
     args = parser.parse_args()
+    print(args)
     # print(args.LIB_LOC)
     # print(args.LIB_CD)
 
