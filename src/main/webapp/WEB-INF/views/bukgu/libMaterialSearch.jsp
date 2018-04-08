@@ -78,7 +78,7 @@
     <%--</li>--%>
 <%--</ul>--%>
 
-<%@include file="/static/html/nav/bukgu/libLNB.html"%>
+<%@include file="/static/html/nav/bukgu/libGNB.html"%>
 
 
 <h3>Dropdown Menu inside a Navigation Bar</h3>

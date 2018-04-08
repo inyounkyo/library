@@ -103,7 +103,6 @@ class CreateNav:
         # print(os.getcwd())
         for i, nav in enumerate(self.navArr):
             fileNM = self.saveDirPath.replace("++", self.libLoc)+nav
-            print(fileNM,i)
             self.fo = open(fileNM, mode="w", encoding="utf8")
             self.fo.write( [self.htmlTagGNB, self.htmlTagLNB][i] )
             self.fo.close()

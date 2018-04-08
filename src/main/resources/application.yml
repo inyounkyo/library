@@ -2,8 +2,7 @@
 # 2. --- 구분
 
 spring:
-  profiles:
-    active: dev
+  profiles: dev
   devtools:
     livereload:
       enabled: true
@@ -14,7 +13,7 @@ spring:
     password: 1234
   pyMenuMain:
     path: /usr/local/server/tomcat8/webapps/ROOT/WEB-INF/classes/
-    saveDirPath: /usr/local/server/tomcat8/webapp/static/html/nav/++/libLNB.html
+    saveDirPath: /usr/local/server/tomcat8/webapps/ROOT/static/html/nav/++/libLNB.html
     pythonV: python3.6
 
 server:
@@ -28,7 +27,8 @@ server:
 ---
 
 spring:
-  profiles: local
+  profiles:
+    active: local
   devtools:
     livereload:
       enabled: true

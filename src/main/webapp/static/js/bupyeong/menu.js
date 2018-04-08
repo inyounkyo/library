@@ -15,5 +15,3 @@ Bupyeong.common = (function ( $ ) {
     };
 
 })($);
-
-
