@@ -13,4 +13,33 @@
         ORDER SIBLINGS BY A.M_SORT
     </select>
 
+    <select id="menuBupyeongCache" resultType="map">
+        SELECT '666' as id, 'JoneKee' as name, '라젠카 젠더1' as artist,  '19582-11-11' as dt, '10' as gubun FROM DUAL
+        union all
+        SELECT '1212' as id, 'JoneKee' as name, '라젠카 젠더1' as artist,  '1982-10-11' as dt, '10' as gubun FROM DUAL
+        union all
+        SELECT '667' as id, 'JoneKeeAAA' as name, '라젠카 젠더1111' as artist,  '1982-10-11' as dt, '10' as gubun FROM DUAL
+        union all
+        SELECT '1111' as id, 'Sujanson' as name, '라젠카 젠더2' as artist,  '1982-10-12' as dt, '10' as gubun FROM DUAL
+        union all
+        SELECT '55' as id, 'RecentHairAb' as name, '라젠카 젠더3' as artist,  '1982-10-12' as dt, '10' as gubun FROM DUAL
+        union all
+        SELECT '88' as id, 'RecentHairAc' as name, '라젠카 젠더3' as artist,  '1982-10-12' as dt, '10' as gubun  FROM DUAL
+        union all
+        SELECT '00' as id, 'RecentHairAd' as name, '라젠카 젠더3' as artist,  '1982-10-12' as dt, '20' as gubun  FROM DUAL
+        union all
+        SELECT '33' as id, 'RecentHairAe' as name, '라젠카 젠더3' as artist,  '1982-10-12' as dt, '20' as gubun  FROM DUAL
+        union all
+        SELECT '45' as id, 'RecentHairAf' as name, '라젠카 젠더3' as artist,  '1982-10-12' as dt, '30' as gubun  FROM DUAL
+        union all
+        SELECT '2456' as id, 'RecentHairBVB' as name, '라젠카 젠더13' as artist,  '1982-10-12' as dt, '30' as gubun  FROM DUAL
+        union all
+        SELECT '12456' as id, 'RecentHairBVaaa' as name, '라젠카 젠더13' as artist,  '1345-10-12' as dt, '10' as gubun  FROM DUAL
+        union all
+        SELECT '666' as id, 'RecentHairBVBcccc' as name, '라젠카 젠더13' as artist,  '1981-10-12' as dt, '20' as gubun  FROM DUAL
+        union all
+        SELECT '77' as id, 'RecentHairBVBddddd' as name, '라젠카 젠더13' as artist,  '1981-10-12' as dt, '30' as gubun  FROM DUAL
+    </select>
+
+
 </mapper>

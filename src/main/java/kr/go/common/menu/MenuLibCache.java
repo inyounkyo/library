@@ -6,7 +6,7 @@ import java.util.Map;
 public interface MenuLibCache {
 
     public List<Map<String, Object>> menuBukguCache(String libCd);
-    public Map<String, Object> menuBupyeongCache(String libCd);
+    public List<Map<String, Object>> menuBupyeongCache();
     public Map<String, Object> menuElibCache(String libCd);
     public Map<String, Object> menuGyeyangCache(String libCd);
     public Map<String, Object> menuHwadojinCache(String libCd);
