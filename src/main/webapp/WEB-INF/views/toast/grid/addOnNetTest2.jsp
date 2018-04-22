@@ -12,6 +12,68 @@
     <link rel="stylesheet" type="text/css" href="/css/explain.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/tui-grid/dist/tui-grid.css" />
     <link rel="stylesheet" type="text/css" href="/node_modules/tui-pagination/dist/tui-pagination.css" />
+
+	<style>
+		.bgClass {  background-color: coral;  }
+		.bgSky {  background-color: skyblue;  }
+		.bgWhite {  background-color: white;  }
+		/*.tui-grid-body-area {
+			background-color: white;
+		}*/
+	</style>
+
+	<script>
+     var ttema =    {
+            grid: {
+              //  background: '#fff',
+                    border: '#ccc',
+                    text: '#444'
+            },
+            selection: {
+                background: '#4daaf9',
+                    border: '#004082'
+            },
+            toolbar: {
+                border: '#ccc',
+                    background: '#fff'
+            },
+            scrollbar: {
+                background: '#f5f5f5',
+                    thumb: '#d9d9d9',
+                    active: '#c1c1c1'
+            },
+            cell: {
+                normal: {
+                    background: '#fffffhack',
+                        border: '#e0e0e0'
+                },
+                head: {
+                    //background: '#eee',
+                        border: '#ccc'
+                },
+                editable: {
+                   // background: '#fbfbfb'
+                },
+                selectedHead: {
+                    //background: '#d8d8d8'
+                },
+                focused: {
+                    border: '#418ed4'
+                },
+                disabled: {
+                    text: '#b0b0b0'
+                },
+                evenRow: {
+                    //background: '#fbfbfb'
+                },
+                currentRow: {
+                    //background: '#e0ffe0'
+                }
+            }
+        }
+
+	</script>
+
 </head>  
 <body>
 
@@ -28,7 +90,7 @@
 				<input type="hidden" name="mode" value="sch" title="숨겨진요소" />
 				<ul class="con_box" style="font-size:10px;">
 					<li class="con">  
-						<p class="title"><label for="daesu9">대수구분</label></p>
+						<p class="title"><label for="">대수구분</label></p>
 						<p class="details">
 							<input type="radio" name="daesu" id="daesu7" value="7" title="7대" class="type-radio" checked="checked" onchange="changeCommitte(this.value);"/><label for="daesu7">7대</label>
 							<input type="radio" name="daesu" id="daesu6" value="6" title="6대" class="type-radio"  onchange="changeCommitte(this.value);"/><label for="daesu6">6대</label>
@@ -55,7 +117,7 @@
 						</p>
 					</li>
 					<li class="con">
-						<p class="title"><label for="word">검색어</label></p>
+						<p class="title"><label for="">검색어</label></p>
 						<p class="details">
 							<input type="text" name="keyword" id="searchText" class="txt" size="50" title="검색어를 입력하세요" /><span class="impo">(예 : 교육지원 조례안)
 						</p>
@@ -99,35 +161,29 @@
             },
             {
                 title: 'Name',
-                name: 'NAME',
-                formatter: function(value, rowData) {
-                    //console.log(rowData);
-
-                    var albumId = rowData.GUBUN;
-                    var url = 'http://music.bugs.co.kr/album/' + albumId;
-					if( rowData.GUBUN == 10) {
-                        return '<div style="padding:0;background-color:coral;">' + value + '</div>';
-                    }else if(rowData.GUBUN == 20) {
-                        return '<div style="padding:0;background-color:pink;">' + value + '</div>';
-                    }else if(rowData.GUBUN == 30){
-                    	return '<div style="padding:0;background-color:yellowgreen;">' + value + '</div>';
-                    }
-                }
+                name: 'NAME'
             },
             {
                 title: 'Artist',
                 name: 'ARTIST',
                 formatter: function(value, rowData) {
-                    //console.log(rowData);
 
                     var albumId = rowData.GUBUN;
                     var url = 'http://music.bugs.co.kr/album/' + albumId;
                     if( rowData.GUBUN == 10) {
-                        return '<div style="padding:0;background-color:coral;">' + value + '</div>';
+                        grid.addCellClassName(rowData.rowKey, "ARTIST", "bgClass");
+
+
+                        return value;
+                        //return '<div style="padding:0;background-color:coral;">' + value + '</div>';
                     }else if(rowData.GUBUN == 20) {
-                        return '<div style="padding:0;background-color:pink;">' + value + '</div>';
+
+                        grid.addCellClassName(rowData.rowKey, "NAME", "bgSky");
+                        return value;
+                        //return '<div style="padding:0;background-color:pink;">' + value + '</div>';
                     }else if(rowData.GUBUN == 30){
-                        return '<div style="padding:0;background-color:yellowgreen;">' + value + '</div>';
+                       // return value;
+                        //return '<div style="padding:0;background-color:yellowgreen;">' + value + '</div>';
                     }
                 }
             }
@@ -136,13 +192,11 @@
     
     grid.use('Net', {
         perPage: 10,
-        readDataMethod: 'POST',  
+        readDataMethod: 'POST',
         enableAjaxHistory: true,
         api: {
             'readData': '/addOnNet/addOnNetTestOk.do'
         }
-       
-        
     });
     
     var net = grid.getAddOn('Net');
@@ -152,12 +206,16 @@
         // For all requests
         
     }).on('response', function(data) {
-       
-    	console.log(data);
-        this.setData(data.responseData);
+       // this.setData(data.responseData);
+
            
     }).on('successResponse', function(data) {
         // Only if response.result is true
+
+       // console.log(data.responseData.data);
+        $('.tui-grid-body-area').attr("class", 'bgWhite');
+        tui.Grid.applyTheme('default', ttema);
+        this.setData(data.responseData.data);
           
     }).on('failResponse', function(data) {
         // Only if response.result is false
@@ -170,24 +228,20 @@
 		this.destroy();
 		//this.restore();
 		this.getAddOn("grid");
-
-    	  //this.setData(data.responseData);
-    	
-        
     });
 
    // console.log(net.api.readData);
 
     function search_f(){
-    
+
     	// url parameters setting
     	var searchObj = {
 				"searchText" : $("#searchText").val()
 		};
     	//net.reloadData();
-    	net.readData(1, searchObj);
+    	//net.readData(1, searchObj);
     }
-    
+
 </script>
 
 </html>
