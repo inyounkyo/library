@@ -16,7 +16,7 @@
 	<style>
 		.bgClass {  background-color: coral;  }
 		.bgSky {  background-color: skyblue;  }
-		.bgWhite {  background-color: white;  }
+		.bgWhite {  background-color: white;  border-color:#e0e0e0; }
 		/*.tui-grid-body-area {
 			background-color: white;
 		}*/
@@ -25,7 +25,7 @@
 	<script>
      var ttema =    {
             grid: {
-              //  background: '#fff',
+               // background: '#121212',
                     border: '#ccc',
                     text: '#444'
             },
@@ -149,23 +149,24 @@
 
     var grid = new tui.Grid({
         el: $('#grid'),
-        scrollX: false,  
-        scrollY: false,
+        scrollX: true,
+        scrollY: true,
+        bodyHeight:300,
         minBodyHeight: 30,
         rowHeaders: ['rowNum'],
         pagination: true,
         columns: [
             {
                 title: 'Date',
-                name: 'DT'
+                name: 'M_IDX'
             },
             {
                 title: 'Name',
-                name: 'NAME'
+                name: 'M_URL'
             },
             {
                 title: 'Artist',
-                name: 'ARTIST',
+                name: 'M_ACCESSAUTH',
                 formatter: function(value, rowData) {
 
                     var albumId = rowData.GUBUN;
@@ -191,7 +192,7 @@
     });
     
     grid.use('Net', {
-        perPage: 10,
+        perPage: 50,
         readDataMethod: 'POST',
         enableAjaxHistory: true,
         api: {
@@ -213,9 +214,9 @@
         // Only if response.result is true
 
        // console.log(data.responseData.data);
-        $('.tui-grid-body-area').attr("class", 'bgWhite');
+       // $('.tui-grid-body-area').attr("class", 'bgWhite');
         tui.Grid.applyTheme('default', ttema);
-        this.setData(data.responseData.data);
+        this.setData(data.responseData.data, kknd);
           
     }).on('failResponse', function(data) {
         // Only if response.result is false
@@ -241,6 +242,13 @@
     	//net.reloadData();
     	//net.readData(1, searchObj);
     }
+    function kknd(){
+
+        console.log('asdfasfasdf11');
+        console.log( $('.tui-grid-body-area').class );
+        $('.tui-grid-body-area').css('background-color','#fff');
+		//$('div').attr('tui-grid-body-area','kknd');
+	}
 
 </script>
 
